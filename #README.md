@@ -1,6 +1,6 @@
 # PyThon_FWDD_Assignment_TP064004
 
-Stack : Mysql,Express.js,Css/tailwindCss,Pug,Node.js
+Stack : Mysql,Express.js,Css,Pug,Node.js
 
 Page Plan
 -Home Page
@@ -18,3 +18,9 @@ Page Plan
 --CRUD Course Page
 --CRUD Quiz Page
 --CRUD Account Page
+
+Database Design
+- User_Acc
+- Course
+- Quiz
+- Raking
