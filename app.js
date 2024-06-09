@@ -34,7 +34,6 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -57,21 +56,12 @@ app.use('/',registerRoute);
 var checkEmailRoute = require('./routes/email')(db);
 app.use('/', checkEmailRoute);
 
-app.get('/about_Us', (req, res) => {
-    res.render('about_Us');
+app.get('/about_us', (req, res) => {
+    res.render('about_us');
 });
 
-app.get('/homePage', (req, res) => { 
-  if (!req.session.user) { 
-    // User is not logged in, redirect to login page 
-    res.redirect('/login'); 
-  } else { 
-    // User is logged in, render the dashboard 
-    res.render('homePage', { user_name: req.session.user_name }); 
-  } 
-});
-
-
+const dashboardRoute = require('./routes/dashboard')(db);
+app.get('/dashboard',dashboardRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

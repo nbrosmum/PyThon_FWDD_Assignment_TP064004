@@ -18,12 +18,12 @@ module.exports = (db) => {
             db.query('SELECT * FROM accounts WHERE user_email = ? AND user_password = ?', [user_email, user_password], (error, results, fields) => {
                 if (results.length > 0) {
                     req.session.user = results[0];
-                    req.session.loggedin = true;
                     req.session.user_email = user_email;
                     req.session.user_id = results[0].id; // Assign id to session
                     req.session.user_name = results[0].user_name; // Assign user_name to session
-                    req.session.user_type = results[0].user_type
-                    res.redirect('/homePage');
+                    req.session.user_type = results[0].user_type;
+                    console.log("User logged in:", req.session.user_name);
+                    res.redirect('/dashboard');
                 } else {
                     res.render('login', { error: 'Incorrect Email and/or Password!' });
                 }

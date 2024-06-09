@@ -12,8 +12,8 @@ router.get('/register', function (req, res, next) {
   res.render('register', { title: 'Register' });
 });
 
-router.get('/homePage', function (req, res, next) {
-  res.render('homePage', { title: 'Dashboard' });
+router.get('/dashboard', function (req, res, next) {
+  res.render('dashboard', { title: 'Dashboard' });
 });
 
 router.get('/about_us', function (req, res, next) {
