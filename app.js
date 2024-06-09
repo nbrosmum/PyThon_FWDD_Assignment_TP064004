@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const session = require('express-session');
 
 const db = mysql.createConnection({
     host: '127.0.0.1',
@@ -26,6 +27,14 @@ db.connect((err) => {
 
 var app = express();
 
+app.use(session({
+  secret: 'pythondb',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -38,6 +47,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+const loginRoute = require('./routes/login')(db);
+app.use('/',loginRoute);
+
+const registerRoute = require('./routes/register')(db);
+app.use('/',registerRoute);
+
+var checkEmailRoute = require('./routes/email')(db);
+app.use('/', checkEmailRoute);
+
+app.get('/about_Us', (req, res) => {
+    res.render('about_Us');
+});
+
+app.get('/homePage', (req, res) => { 
+  if (!req.session.user) { 
+    // User is not logged in, redirect to login page 
+    res.redirect('/login'); 
+  } else { 
+    // User is logged in, render the dashboard 
+    res.render('homePage', { user_name: req.session.user_name }); 
+  } 
+});
+
 
 
 // catch 404 and forward to error handler

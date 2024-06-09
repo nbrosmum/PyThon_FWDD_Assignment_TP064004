@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="icon", href="./images/p.png")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js") 
+    link(rel="stylesheet", href="/stylesheets/accounts.css")
+  body
+    form#register-form(method='post') 
+      h1 User Registration 
+      label(for='name') Name: 
+      input#name(type='text', name='user_name', required) 
+      label(for='email') Email: 
+      input#email(type='email', name='user_email', required) 
+      label(for='password') Password: 
+      input#password(type='password', name='user_password', required) 
+      label(for='show-password') Show Password
+        input#show-password(type='checkbox')
+        br
+      button#register-button(type='submit') Register 
+      button#reset-button(type='reset') Reset
+      p Already signed up? 
+        a(href='/login') Login here
+      p Back to home 
+        a(href='/') home
+      p#email-error
+      p#password-error
+  script(src='/javascripts/validation.js')
+

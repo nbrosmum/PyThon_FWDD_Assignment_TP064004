@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="icon", href="./images/p.png")
+    link(rel="stylesheet", href="/stylesheets/accounts.css")
+  body  
+    form#login-form(action='/login' method='post') 
+      h1  Login
+      label(for='user_email') Email Address
+      input#username(type='email' name='user_email' required)
+      label(for='user_password') Password
+      input#password(type='password' name='user_password' required)
+      label(for='show-password') Show Password
+        input#show-password(type='checkbox')
+      button#login-button(type='submit') Login
+      p(style="color: red;") #{error}
+      p No account? Register 
+        a(href="register") here
+
+        
+  script.
+      document.getElementById('show-password').addEventListener('change', function() {
+        var passwordField = document.getElementById('password');
+        if (this.checked) {
+          passwordField.type = 'text';
+        } else {
+          passwordField.type = 'password';
+        }
+      });
+

@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(155, 154, 154);
+}
+
+.register-form,#login-form h1 {
+text-align: center;
+margin-bottom: 20px;
+}
+#register-form,#login-form {
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding: 50px 60px 70px;
+} 
+#register-form,#login-form label {
+display: block;
+margin-bottom: 5px;
+}
+#register-form input[type="text"],
+#register-form input[type="email"],
+#register-form input[type="password"],
+#login-form input[type="text"],
+#login-form input[type="email"],
+#login-form input[type="password"]{
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+margin-bottom: 15px;
+}
+#register-button,
+#reset-button, 
+#login-button {
+    width: 45%;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+#register-button, 
+#reset-button, 
+#login-button:hover {
+    background-color: #0056b3;
+}
