@@ -1,5 +1,185 @@
 extends layout
 
 block content
-	
-	
+    .banner 
+        .intro-text 
+            h2#what-is-python What is Python?
+            p Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built-in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components.
+            br
+            h2#why-learn-python Why Learn Python?
+            ul
+            li Simple and easy to learn
+            li Readable and maintainable code
+            li Comprehensive standard library
+            li Support for multiple programming paradigms
+            li Vast community and wealth of resources
+            h2#features-of-python Features of Python
+            ul
+            li
+                strong Easy to Read: 
+                | Python's syntax is designed to be readable and straightforward.
+            li
+                strong Versatile: 
+                | Python can be used for web development, data science, AI, and more.
+            li
+                strong Portable: 
+                | Python code can run on any machine without needing changes.
+            li
+                strong Extensive Libraries: 
+                | Python has a rich set of libraries and frameworks for various tasks.
+            br
+            h2#getting-started-with-python Getting Started with Python
+            p To get started with Python, you can download and install the latest version from the official Python website. Once installed, you can start writing and executing Python code using the interactive shell or an integrated development environment (IDE) such as PyCharm or VSCode.
+            h2#example-code Example Code
+            pre.code-block
+                code
+                    | print("Hello, World!")
+            p This simple program prints "Hello, World!" to the console, demonstrating the basic syntax of Python.
+            br
+            h2#conclusion Conclusion
+            p Python is a versatile and powerful language that is easy to learn and use. Whether you are a beginner or an experienced programmer, Python has something to offer. Explore our platform to start your Python learning journey today!
+            br
+            h2#python-variables Python Variables
+            p In Python, a variable is a named storage location that stores data which can be referenced and manipulated throughout the program. Unlike some other programming languages, Python does not require you to explicitly declare the type of a variable. Instead, the type of the variable is inferred at runtime based on the value assigned to it. This makes Python a dynamically typed language.
+            p To create a variable in Python, you simply assign a value to a name using the equal sign (`=`). For example:
+            pre.code-block
+                code
+                    | x = 10
+                    | name = "John"
+            p In this example, `x` is assigned the integer value `10`, and `name` is assigned the string value `"John"`.
+            p Python variable names can consist of letters (both uppercase and lowercase), digits, and underscores, but they cannot start with a digit. Variable names are case-sensitive, meaning `name`, `Name`, and `NAME` would be considered different variables.
+            p Here are some examples of valid variable names:
+            ul
+                li `age`
+                li `my_var`
+                li `count_1`
+            p And here are some examples of invalid variable names:
+            ul
+                li `1count` (starts with a digit)
+                li `my-var` (contains a hyphen)
+                li `my var` (contains a space)
+            p It's recommended to use descriptive variable names that indicate the purpose of the variable. This helps make your code more readable and maintainable.
+            p Python also supports multiple assignment, allowing you to assign values to multiple variables in a single line. For example:
+            pre.code-block
+                code
+                    | a, b, c = 1, 2, 3
+            p In this example, the values `1`, `2`, and `3` are assigned to variables `a`, `b`, and `c` respectively.
+            p Variables in Python can be reassigned to different values at any point in the program, and they can also change types. For example:
+            pre.code-block
+                code
+                    | x = 10
+                    | x = "Hello"
+            p In this example, `x` is first assigned the integer value `10`, but it is later reassigned the string value `"Hello"`.
+            br
+            h2#data-types Python Data Types
+            p Python is a dynamically typed language, meaning you don't need to declare the type of a variable when you create one. Python automatically assigns data types based on the value you assign to the variable.
+            h3 Numeric Types
+            p Python supports various numeric data types, including:
+            ul
+                li Integer (int): Whole numbers without any decimal point. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | num = int(input("Enter an integer: "))
+                li Float (float): Real numbers with a decimal point.  
+                    | Example:
+                    pre.code-block
+                        code
+                            | num = float(input("Enter a float: "))
+                li Complex (complex): Numbers with a real and imaginary part (e.g., 3 + 2j).
+                    | Example:
+                    pre.code-block
+                        code
+                            | num = complex(input("Enter a complex number (in the form a+bj): "))
+            h3 Sequence Types
+            p Python has several sequence data types, including:
+            ul
+                li List (list): Ordered and mutable collections of items. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | my_list = input("Enter a list of numbers separated by spaces: ").split()
+                li Tuple (tuple): Ordered and immutable collections of items.
+                    | Example:
+                    pre.code-block
+                        code
+                            | my_tuple = tuple(input("Enter a tuple of items separated by commas: ").split(','))
+                li Range (range): Represents an immutable sequence of numbers. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | start = int(input("Enter the start: "))
+                            | stop = int(input("Enter the stop: "))
+                            | step = int(input("Enter the step: "))
+                            | my_range = range(start, stop, step))
+
+            h3 Text Sequence Type
+            p Python has a single text sequence type:
+            ul
+                li String (str): A sequence of Unicode characters. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | my_string = input("Enter a string: ")
+
+            h3 Set Types
+            p Python includes two set data types for collections of unique elements:
+            ul
+                li Set (set): Unordered collections of unique items. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | my_set = set(input("Enter a set of elements separated by spaces: ").split())
+                li Frozen Set (frozenset): Immutable versions of sets.
+
+            h3 Mapping Types
+            p Python provides a single mapping type:
+            ul
+                li Dictionary (dict): Unordered collections of key-value pairs. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | my_dict = eval(input("Enter a dictionary in the format {'key1': 'value1', 'key2': 'value2'}: "))
+
+            h3 Boolean Type
+            p Python has a built-in boolean data type:
+            ul
+                li Boolean (bool): Represents truth values True and False. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | is_python_fun = bool(input("Is Python fun? (True/False): "))
+
+            h3 None Type
+            p Python has a special data type representing the absence of a value:
+            ul
+                li None (NoneType): Represents the null value or absence of value. 
+                    | Example:
+                    pre.code-block
+                        code
+                            | my_var = None
+
+    .toc 
+        section 
+            h2 Table of Contents
+            ul
+                li 
+                    strong Introduction 
+                li
+                    a(href='#what-is-python') What is Python?
+                li
+                    a(href='#why-learn-python') Why Learn Python?
+                li
+                    a(href='#features-of-python') Features of Python
+                li
+                    a(href='#getting-started-with-python') Getting Started with Python
+                li
+                    a(href='#example-code') Example Code
+                li
+                    a(href='#conclusion') Conclusion
+                li 
+                    strong 
+                        a(href="#python-variables") Python Variables
+                li 
+                    strong 
+                        a(href="#data-types") Python Type

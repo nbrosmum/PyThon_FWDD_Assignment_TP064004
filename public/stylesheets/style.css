@@ -10,9 +10,10 @@ header {
   top: 0;
   left: 0;
   z-index: 10;
-  padding: 0 10px;
+  padding: 0px 10px;
   background-color: #0097a7;
 }
+
 .navbar {
   display: flex;
   padding: 22px 0;
@@ -69,7 +70,7 @@ header {
 
 .banner{
   width: 80%;
-  height:70%;
+  height:100%;
   top: 30%;
   left: 100px;
   position: absolute;
@@ -137,6 +138,49 @@ small{
   letter-spacing: 3px;
 }
 
+pre.code-block {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  width: calc(100% - 80px);
+  margin: 0 auto 30px 40px;
+}
+
+.toc {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.toc h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 5px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #333;
+}
+
+.toc a:hover {
+  color: #007bff;
+}
 @media only screen and (min-width: 768px) {
   .col-1{width: 8.33%;}
   .col-2{width: 16.66%;}

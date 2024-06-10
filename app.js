@@ -61,7 +61,8 @@ app.get('/about_us', (req, res) => {
 });
 
 const dashboardRoute = require('./routes/dashboard')(db);
-app.get('/dashboard',dashboardRoute);
+app.get('/',dashboardRoute);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

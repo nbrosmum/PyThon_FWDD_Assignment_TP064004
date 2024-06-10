@@ -4,9 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
 
     router.get('/login', (req, res) => {
-        const error = req.session.error;
-        req.session.error = null; // Clear the error message
-        res.render('login', { error });
+        res.render('login');
     });
 
     router.post('/login', (req, res) => {
@@ -22,7 +20,6 @@ module.exports = (db) => {
                     req.session.user_id = results[0].id; // Assign id to session
                     req.session.user_name = results[0].user_name; // Assign user_name to session
                     req.session.user_type = results[0].user_type;
-                    console.log("User logged in:", req.session.user_name);
                     res.redirect('/dashboard');
                 } else {
                     res.render('login', { error: 'Incorrect Email and/or Password!' });
@@ -35,17 +32,22 @@ module.exports = (db) => {
         }
     });
 
-    router.get('/logout', (req, res) => {
+    router.get('/logout', (req, res, next) => {
         if (req.session) {
-            // delete session object
-            req.session.destroy(function(err) {
-                if(err) {
-                    return next(err);
+            // Destroy session object
+            req.session.destroy((err) => {
+                if (err) {
+                    // Forward the error to the error handling middleware
+                    next(err);
                 } else {
-                    return res.redirect('/login');
+                    // Redirect to the login page after successful logout
+                    res.redirect('/login');
                 }
             });
+        } else {
+            // Session doesn't exist, redirect to the login page
+            res.redirect('/login');
         }
-      });
+    });
     return router;
 };
