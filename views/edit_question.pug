@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 Edit Question
+
+  form(action=`/manage/edit/${question.id}` method="post")
+    div.form-group
+      label(for="question_text") Question Text
+      input#question_text.form-control(type="text" name="question_text" value=question.text required)
+
+    each answer, index in question.answers
+      div.form-group
+        label(for=`answers[${index}][text]`) Answer #{index + 1}
+        input.form-control(type="text" name=`answers[${index}][text]` value=answer.text required)
+        input(type="hidden" name=`answers[${index}][id]` value=answer.id)
+        label.form-check-label(for=`is_correct_${index}`) Correct
+        div.form-check
+          input.form-check-input(
+            type="checkbox"
+            name=`answers[${index}][is_correct]`
+            id=`is_correct_${index}`
+            value="true"
+            checked=answer.is_correct ? true : false
+          )
+
+    button.btn.btn-primary(type="submit") Save

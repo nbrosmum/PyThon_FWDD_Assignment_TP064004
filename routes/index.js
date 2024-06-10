@@ -3,21 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'PyThon' });
-});
-router.get('/login', function (req, res, next) {
-    res.render('login', { title: 'Login' });
-});
-router.get('/register', function (req, res, next) {
-  res.render('register', { title: 'Register' });
+    res.render('index', { title: 'PyThon', email: req.session.user_email, type: req.session.user_type, user: req.session.user });
 });
 
-router.get('/dashboard', function (req, res, next) {
-  res.render('dashboard', { title: 'Dashboard' });
-});
-
-router.get('/about_us', function (req, res, next) {
-  res.render('about_us', { title: 'About Us' });
-});
 
 module.exports = router;

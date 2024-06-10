@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Manage Quiz
+  a(href="/manage/add" class="btn btn-primary") Add New Question
+
+  each question in questions
+    .card
+      .card-body
+        h5.card-title #{question.text}
+        ul
+          each answer in question.answers
+            li
+              span #{answer.text}
+              if answer.is_correct
+                span.text-success (Correct)
+        
+        a(class="btn btn-danger", href=`/manage/edit/${question.id}`) Edit
+        form(method="post" action=`/manage/delete/${question.id}` style="display:inline;")
+          button(type="submit" class="btn btn-danger") Delete
+

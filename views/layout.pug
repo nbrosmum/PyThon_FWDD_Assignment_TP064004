@@ -2,24 +2,40 @@ doctype html
 html
   head
     title= title
-    link(rel="icon", href="./images/p.png")
+    link(rel="icon", href="/images/p.png")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0")
-    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css")
-    body
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css")
+  body
     header
       nav.navbar
-        a(href="/" class = "logo") 
-          img(src=" ./images/logo.png", alt="Python")
-          h2 PyThon Learning Plafrom 
-          ul.links 
+        a(href="/" class="logo") 
+          img(src="/images/logo.png", alt="Python")
+          h2 PyThon Learning Platform 
+        ul.links 
+          li
+            a(href="/about_us") About Us
+          li
+            a(href="/dashboard") Lesson
+          if type === 'user'
             li
-              a(href="about_us") About Us
-            li
-              a(href="dashboard") Lesson
-            li
-              a(href="#") Python Quiz
+                a( href="/quizzes") Python Quiz
             li 
-              a(class = "LRbtn" href="/login") Login
-              a(class = "LRbtn" href="/register") Register
-    block content
+              p #{email} 
+                a(class="LRbtn" href="/logout") Logout
+          else if type === 'admin'
+            li
+              a( href="/quizzes") Python Quiz
+            li
+              a(href="/manage") Manage Quiz
+            li 
+              p #{email} 
+                a(class="LRbtn" href="/logout") Logout
+          else
+            li 
+              a(class="LRbtn" href="/login") Login
+              a(class="LRbtn" href="/register") Register
+    .container
+      block content
+
+

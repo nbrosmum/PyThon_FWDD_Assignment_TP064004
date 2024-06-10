@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Add Question
+
+  form(method="post" action="/manage/add")
+    .form-group
+      label(for="question_text") Question
+      input.form-control(type="text", name="question_text", placeholder="Enter question text", required)
+
+    .form-group
+      label Answers
+      each answer, index in [0, 1, 2, 3]
+        .answer
+          input.form-control(type="text", name=`answers[${index}][text]`, placeholder="Answer text", required)
+          label(for=`is_correct_${index}`) Correct
+          input(type="checkbox", name=`answers[${index}][is_correct]`, value="true")
+
+    button(type="submit" class="btn btn-primary") Add Question
+

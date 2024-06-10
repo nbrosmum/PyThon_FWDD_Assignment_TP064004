@@ -16,6 +16,7 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'root',
     database: 'pythondb',
+    multipleStatements: true
 });
 db.connect((err) => {
     if (err) {
@@ -44,6 +45,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const quizzesRoutes = require('./routes/quizzes')(db);
+const resultsRoutes = require('./routes/results')(db);
+
+app.use('/quizzes', quizzesRoutes);
+app.use('/results', resultsRoutes);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -56,12 +63,15 @@ app.use('/',registerRoute);
 var checkEmailRoute = require('./routes/email')(db);
 app.use('/', checkEmailRoute);
 
-app.get('/about_us', (req, res) => {
-    res.render('about_us');
-});
+var about_usRoute = require('./routes/about_us');
+app.use(about_usRoute);
 
-const dashboardRoute = require('./routes/dashboard')(db);
-app.get('/',dashboardRoute);
+const dashboardRoute = require('./routes/dashboard');
+app.use(dashboardRoute);
+
+
+const manageRouter = require('./routes/manage')(db);
+app.use('/manage', manageRouter);
 
 
 // catch 404 and forward to error handler
