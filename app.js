@@ -45,12 +45,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const quizzesRoutes = require('./routes/quizzes')(db);
-const resultsRoutes = require('./routes/results')(db);
-
-app.use('/quizzes', quizzesRoutes);
-app.use('/results', resultsRoutes);
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -69,9 +63,15 @@ app.use(about_usRoute);
 const dashboardRoute = require('./routes/dashboard');
 app.use(dashboardRoute);
 
-
 const manageRouter = require('./routes/manage')(db);
 app.use('/manage', manageRouter);
+
+const quizzesRoutes = require('./routes/quizzes')(db);
+app.use('/quizzes', quizzesRoutes);
+
+const resultsRoutes = require('./routes/results')(db);
+app.use('/results', resultsRoutes);
+
 
 
 // catch 404 and forward to error handler
