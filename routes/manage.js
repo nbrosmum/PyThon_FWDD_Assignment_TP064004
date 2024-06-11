@@ -195,27 +195,39 @@ module.exports = (db) => {
     router.post('/delete/:id', (req, res) => {
         const questionId = req.params.id;
 
-        // First delete the answers associated with the question
+        // First delete the responses associated with the answers of the question
         db.query(
-            'DELETE FROM answers WHERE question_id = ?',
+            'DELETE responses FROM responses INNER JOIN answers ON responses.selected_answer_id = answers.id WHERE answers.question_id = ?',
             [questionId],
             (error) => {
                 if (error) {
-                    console.error('Error deleting answers:', error);
-                    return res.status(500).send('An error occurred while deleting answers');
+                    console.error('Error deleting responses:', error);
+                    return res.status(500).send('An error occurred while deleting responses');
                 }
 
-                // Then delete the question
+                // Then delete the answers associated with the question
                 db.query(
-                    'DELETE FROM questions WHERE id = ?',
+                    'DELETE FROM answers WHERE question_id = ?',
                     [questionId],
                     (error) => {
                         if (error) {
-                            console.error('Error deleting question:', error);
-                            return res.status(500).send('An error occurred while deleting the question');
+                            console.error('Error deleting answers:', error);
+                            return res.status(500).send('An error occurred while deleting answers');
                         }
 
-                        res.redirect('/manage');
+                        // Finally, delete the question
+                        db.query(
+                            'DELETE FROM questions WHERE id = ?',
+                            [questionId],
+                            (error) => {
+                                if (error) {
+                                    console.error('Error deleting question:', error);
+                                    return res.status(500).send('An error occurred while deleting the question');
+                                }
+
+                                res.redirect('/manage');
+                            }
+                        );
                     }
                 );
             }

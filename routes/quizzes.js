@@ -52,7 +52,7 @@ module.exports = (db) => {
                                 });
 
                                 // Render the quiz page with fetched data
-                                res.render('quizzes', { quiz: quiz, questions: questionsWithAnswers, title: "Python Quiz", email: req.session.user_email, type: req.session.user_type, user: req.session.user });
+                                res.render('quizzes', {quiz: quiz, questions: questionsWithAnswers, title: "Python Quiz", email: req.session.user_email, type: req.session.user_type, user: req.session.user });
                             }
                         );
                     }

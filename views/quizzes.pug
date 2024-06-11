@@ -4,13 +4,12 @@ block content
     .container
       h1= quiz.title
       form(action='/quizzes/submit', method='post')
-        each question in questions
+        each question, index in questions
           .card
             .card-body
-              h5.card-title Question #{question.id}
+              h5.card-title Question #{index + 1}
               p.card-text= question.question_text
               each answer in question.answers
-                div
-                  input(type='radio', name='question-' + question.id, value=answer.id)
-                  label= answer.answer_text
+                input(type='radio', name='question-' + question.id, value=answer.id)
+                label= answer.answer_text
         button(class="btn btn-primary", type='submit') Submit Quiz
